@@ -21,28 +21,20 @@ public class Main {
         //• Правила синтаксиса и пунктуации соблюдены.
         System.out.println("");
         int age = 19;
-        int salary = 20_000;
+        int salary = 80_000;
+        System.out.println("Ваш возраст " + age + " лет ");
+        System.out.println("Ваша заработная плата " + salary + " рублей ");
         if (age >= 23) {
-            if (salary < 50000) {
-            salary *= 3;
-            System.out.println("Человеку больше чем 23 года и заработная плата <50000 : " + salary);
+            if (salary >=80000) {
+                salary *= 1.5;
             }else if (salary >= 50000 && salary < 80000){
                 salary *= 1.2;
-                System.out.println("Человеку больше чем 23 года  и запаботная плата > 50000 и меньше <80000: " + salary);
-            }else if (salary >= 80000) {
-            salary *= 1.5;
-            System.out.println("Человеку больше чем 23 года и заработная плата >=80000 : " + salary);
-            }
+            }else salary *= 3;
         } else {if (salary >= 80000) {
             salary *= 1.5;
-            System.out.println("Человеку меньше чем 23 года и заработная плата >=80000 : " + salary);
         }else if (salary >= 50000 && salary < 80000) {
             salary *= 1.2;
-            System.out.println("Человеку меньше чем 23 года  и запаботная плата > 50000 и меньше <80000: " + salary);
-        }else if (salary < 50000) {
-            salary *= 2;
-            System.out.println("Человеку меньше чем 23 года и заработная плата <50000 : " + salary);
-        }
+        }else salary *= 2;
         }
         System.out.println("Мы готовы выдать вам кредитную карту с лимитом " + salary + " рублей ");
     }
