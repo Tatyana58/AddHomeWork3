@@ -56,33 +56,32 @@ public class Main {
         //то кредит одобрен, если меньше — отказан.
         //Пример ответа в консоль: «Максимальный платеж при ЗП * равен * рублей. Платеж по кредиту *** рублей. Одобрено/отказано».
         System.out.println("");
-        byte age2=35;
-        int salary2=15_000;
+        byte age2 = 25;
+        int salary2 = 60_000;
         float wantedSum = 330_000f;    //Сумма кредита
-        float baseRate = 10f;          //Базовая ставка в %
         float acceptablePayment = 0f;      // допустимый платеж
-        if (salary2<80000) {
+        if (salary2 < 80000 && salary2 > 0) {
             if (age2 >= 30) {
-                acceptablePayment = (float) ((wantedSum+wantedSum*(baseRate/100))/12);
-            } else if (age2< 30 && age2 >= 23) {
-                acceptablePayment = (float) ((wantedSum+wantedSum*(baseRate+0.5)/100)/12);
-            } else if (age2<23&&age2>=18) {
-                acceptablePayment = (float) ((wantedSum+wantedSum*(baseRate+1)/100)/12);
-            }else System.out.println("В таком возрате кредиты не выдаем!");
+                acceptablePayment = (float) ((wantedSum + wantedSum * (10 / 100)) / 12);
+            } else if (age2 < 30 && age2 >= 23) {
+                acceptablePayment = (float) ((wantedSum + wantedSum * (10 + 0.5) / 100) / 12);
+            } else if (age2 < 23 && age2 >= 18) {
+                acceptablePayment = (float) ((wantedSum + wantedSum * (10 + 1) / 100) / 12);
+            } else System.out.println("В таком возрате кредиты не выдаем!");
         } else {
             if (age2 >= 30) {
-                acceptablePayment = (float) ((wantedSum + wantedSum * (baseRate-0.7) / 100) / 12);
+                acceptablePayment = (float) ((wantedSum + wantedSum * (10 - 0.7) / 100) / 12);
             } else if (age2 < 30 && age2 >= 23) {
-                acceptablePayment = (float) ((wantedSum + wantedSum * (baseRate + 0.5-0.7) / 100) / 12);
+                acceptablePayment = (float) ((wantedSum + wantedSum * (10 + 0.5 - 0.7) / 100) / 12);
             } else if (age2 < 23 && age2 >= 18) {
-                acceptablePayment = (float) ((wantedSum + wantedSum * (baseRate + 1-0.7) / 100) / 12);
+                acceptablePayment = (float) ((wantedSum + wantedSum * (10 + 1 - 0.7) / 100) / 12);
             } else System.out.println("В таком возрате кредиты не выдаем!");
         }
-        System.out.println("Допустимый платеж = "+acceptablePayment);
-        if (acceptablePayment<salary2/2){
-            System.out.println("«Максимальный платеж при ЗП "+salary2+" равен "+salary2/2+" рублей."+
-                    " Платеж по кредиту "+acceptablePayment+" рублей. Одобрено».");
-        }else {
+        System.out.println("Допустимый платеж = " + acceptablePayment);
+        if (acceptablePayment < salary2 / 2) {
+            System.out.println("«Максимальный платеж при ЗП " + salary2 + " равен " + salary2 / 2 + " рублей." +
+                    " Платеж по кредиту " + acceptablePayment + " рублей. Одобрено».");
+        } else {
             System.out.println("«Максимальный платеж при ЗП " + salary2 + " равен " + salary2 / 2 + " рублей." +
                     " Платеж по кредиту " + acceptablePayment + " рублей. Отказано».");
         }
