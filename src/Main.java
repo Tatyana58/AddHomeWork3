@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Дополнительное задание Условные опереаторы");
+        System.out.println("Доп задание №1 ");
         //skypro: Задача 6
         //и снова дела банковские, уже сложнее.
         //В нашем банке можно, кроме дебетовых, получать еще и кредитные карты. У таких карт есть допустимый лимит средств,
@@ -20,22 +20,72 @@ public class Main {
         //• Написанный код отрабатывает условия задачи и изменение значений переменных, выводит в консоль корректный результат
         //• Правила синтаксиса и пунктуации соблюдены.
         System.out.println("");
-        int age = 19;
-        int salary = 80_000;
+        int age = 25;
+        int salary = 60_000;
         System.out.println("Ваш возраст " + age + " лет ");
         System.out.println("Ваша заработная плата " + salary + " рублей ");
         if (age >= 23) {
-            if (salary >=80000) {
+            if (salary >= 80000) {
                 salary *= 1.5;
-            }else if (salary >= 50000 && salary < 80000){
+            } else if (salary >= 50000 && salary < 80000) {
                 salary *= 1.2;
-            }else salary *= 3;
-        } else {if (salary >= 80000) {
-            salary *= 1.5;
-        }else if (salary >= 50000 && salary < 80000) {
-            salary *= 1.2;
-        }else salary *= 2;
+            } else salary *= 3;
+        } else {
+            if (salary >= 80000) {
+                salary *= 1.5;
+            } else if (salary >= 50000 && salary < 80000) {
+                salary *= 1.2;
+            } else salary *= 2;
         }
         System.out.println("Мы готовы выдать вам кредитную карту с лимитом " + salary + " рублей ");
+        System.out.println("");
+
+        System.out.println("Доп Задание №2");
+        //Расширим задачу с кредитованием. Прежде чем выдавать кредиты наш банк проводит аудит и оценивает клиентов
+        //и их возможность выплачивать кредит. Для того, чтобы вывести предварительное решение, нам необходимо
+        //использовать данные о возрасте, зарплате и желаемой сумме.
+        //Правила следующие:
+        //Базовая ставка для клиента — 10% годовых. Срок кредитования — 12 месяцев. Максимальный ежемесячный платеж — 50% от ЗП.
+        //Если возраст меньше 23, то добавляем 1% к ставке.Если возраст меньше 30, то добавляем 0.5% к ставке.
+        //Если зарплата больше 80_000, уменьшаем ставку на 0.7%.
+        //Нам нужно написать программу для предварительного одобрения/отказа заявки по кредиту.
+        //Вводные данные: используйте переменные age = 25 для обозначения возраста,salary = 60_000 для обозначения зарплаты,
+        //wantedSum = 330_000 для обозначения желаемой суммы кредита.
+        //Подсчитайте и выведите ответ, одобрен кредит или нет. На основании зарплаты подсчитайте максимальный допустимый платеж.
+        //Если максимальный допустимый платеж по ЗП больше стандартного платежа по кредиту согласно процентной ставке,
+        //то кредит одобрен, если меньше — отказан.
+        //Пример ответа в консоль: «Максимальный платеж при ЗП * равен * рублей. Платеж по кредиту *** рублей. Одобрено/отказано».
+        System.out.println("");
+        byte age2=35;
+        int salary2=15_000;
+        float wantedSum = 330_000f;    //Сумма кредита
+        float baseRate = 10f;          //Базовая ставка в %
+        float acceptablePayment = 0f;      // допустимый платеж
+        if (salary2<80000) {
+            if (age2 >= 30) {
+                acceptablePayment = (float) ((wantedSum+wantedSum*(baseRate/100))/12);
+            } else if (age2< 30 && age2 >= 23) {
+                acceptablePayment = (float) ((wantedSum+wantedSum*(baseRate+0.5)/100)/12);
+            } else if (age2<23&&age2>=18) {
+                acceptablePayment = (float) ((wantedSum+wantedSum*(baseRate+1)/100)/12);
+            }else System.out.println("В таком возрате кредиты не выдаем!");
+        } else {
+            if (age2 >= 30) {
+                acceptablePayment = (float) ((wantedSum + wantedSum * (baseRate-0.7) / 100) / 12);
+            } else if (age2 < 30 && age2 >= 23) {
+                acceptablePayment = (float) ((wantedSum + wantedSum * (baseRate + 0.5-0.7) / 100) / 12);
+            } else if (age2 < 23 && age2 >= 18) {
+                acceptablePayment = (float) ((wantedSum + wantedSum * (baseRate + 1-0.7) / 100) / 12);
+            } else System.out.println("В таком возрате кредиты не выдаем!");
+        }
+        System.out.println("Допустимый платеж = "+acceptablePayment);
+        if (acceptablePayment<salary2/2){
+            System.out.println("«Максимальный платеж при ЗП "+salary2+" равен "+salary2/2+" рублей."+
+                    " Платеж по кредиту "+acceptablePayment+" рублей. Одобрено».");
+        }else {
+            System.out.println("«Максимальный платеж при ЗП " + salary2 + " равен " + salary2 / 2 + " рублей." +
+                    " Платеж по кредиту " + acceptablePayment + " рублей. Отказано».");
+        }
+        System.out.println("");
     }
 }
